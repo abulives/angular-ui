@@ -3,7 +3,10 @@
 	<a class="navbar-brand" routerLink="/">Angular</a>
   	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     	<div class="navbar-nav">
-      		<!--<a class="nav-item nav-link active" routerLink="/home">Home <span class="sr-only">(current)</span></a>-->
+    		<span *ngIf = "signinButton == '1'; then usermenu" ></span>
+    		<ng-template #usermenu>
+      			<a class="nav-item nav-link active" routerLink="/home">Users <span class="sr-only">(current)</span></a>
+    		</ng-template>
     	</div>
   	</div>
   	<form class="form-inline my-2 my-lg-0">
