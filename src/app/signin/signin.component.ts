@@ -22,7 +22,6 @@ export class SigninComponent implements OnInit{
        		if(data){
       			localStorage.setItem('isLoggedIn', "1");
       			localStorage.setItem('user', data.username);
-         		//console.log("response", data);
          		//this.router.navigate(['home']);
 				window.location.href = "/home";
 			}

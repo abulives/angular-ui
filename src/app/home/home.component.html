@@ -1,4 +1,4 @@
-<p>Welcome {{username}}</p>
+<p>Welcome <code>{{username}}</code></p>
 <span *ngIf = "alertButton == '1'; then condition1 " ></span> 
 <ng-template #condition1>
 	<div class="alert alert-success alert-dismissible fade show">
@@ -20,7 +20,9 @@
         <th>Name</th>
         <th>Username</th>
         <th>Email</th>
-        <th></th>
+        <th>Registration time</th>
+        <th>User Id</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -28,6 +30,8 @@
         <td>{{user.username}}</td>
         <td>{{user.username}}</td>
         <td>{{user.username}}@cognizant.com</td>
+        <td>{{user.date | date:"dd/MM/yyyy 'at' h:mma"}}</td>
+        <td>{{user._id}}</td>
         <td>
         	<i class="fa fa-trash over-pointer" aria-hidden="true"  (click) = "onClickDelete(user)"></i>
         </td>
