@@ -10,15 +10,15 @@ export class MyserviceService {
 
   constructor(private http:HttpClient) { }
    signIn(data) {
-        return this.http.post('/api/v1/users/signin', data, httpOptions)
+        return this.http.post('http://localhost:3000/api/v1/users/signin', data, httpOptions)
    }
    registerUser(data){
-   		return this.http.post('/api/v1/users/signup', data, httpOptions)
+   		return this.http.post('http://localhost:3000/api/v1/users/signup', data, httpOptions)
    }
    listUsers() {
-        return this.http.get('/api/v1/users/users')
+        return this.http.get('http://localhost:3000/api/v1/users/users')
    }
    deleteUser(user) {
-        return this.http.delete('/api/v1/users/user/'+user._id, httpOptions)
+        return this.http.delete('http://localhost:3000/api/v1/users/user/'+user._id, httpOptions)
    }
 }
