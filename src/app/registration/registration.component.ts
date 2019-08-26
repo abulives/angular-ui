@@ -10,6 +10,7 @@ import { MyserviceService } from '../myservice.service';
 })
 export class RegistrationComponent implements OnInit {
     alertButton = '0';
+    errmsg="";
     constructor(private router: Router,
         private myservice: MyserviceService) {}
 
@@ -24,7 +25,13 @@ export class RegistrationComponent implements OnInit {
             },
             error => {
                 this.alertButton = '2';
-                console.error("Error", error);
+                if(error.error.errmsg){
+                    this.errmsg = error.error.errmsg;
+                }else if(error.error.message){
+                    this.errmsg = error.error.message;
+                }else{
+                    this.errmsg = "Something went wrong.";
+                }
             }
         );
     }
