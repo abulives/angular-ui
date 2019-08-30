@@ -1,24 +1,45 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<a class="navbar-brand" routerLink="/">Angular</a>
+	<a class="navbar-brand" routerLink="/product">Angular</a>
   	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     	<div class="navbar-nav">
-    		<span *ngIf = "signinButton == '1'; then usermenu" ></span>
+    		<span *ngIf = "signinButton == '1' && user_type == '1'; then usermenu" ></span>
     		<ng-template #usermenu>
       			<a class="nav-item nav-link active" routerLink="/home">Users <span class="sr-only">(current)</span></a>
     		</ng-template>
     	</div>
-  	</div>
-  	<form class="form-inline my-2 my-lg-0">
-  		<span *ngIf = "signinButton == '0'; then condition1 else condition2" ></span> 
-  		<ng-template #condition1>
-  			<button routerLink="/signin" class="btn btn-success my-2 my-sm-0" type="button">Sign In</button>
-  		</ng-template>
-  		<ng-template #condition2>
-    		<button (click) = "logout()" class="btn btn-success my-2 my-sm-0" type="button">Sign Out</button>
-  		</ng-template>
-    	    	
-    </form>
+	</div>
+	<form class="form-inline my-2 my-lg-0">
+		<span *ngIf = "signinButton == '0'; then condition1 else condition2" ></span> 
+		<ng-template #condition1>
+			<button routerLink="/signin" class="btn btn-success my-2 my-sm-0" type="button">Sign In</button>
+		</ng-template>
+		<ng-template #condition2>
+			<ul class="navbar-nav">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+					{{username}}
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#">My Profile</a>
+						<a class="dropdown-item" href="#">Orders</a>
+						<a (click) = "logout()" class="dropdown-item">Signout</a>
+					</div>
+				</li>
+				<li class="nav-item">
+					<!--<a class="nav-link" routerLink="/product">
+						<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+						Cart
+					</a>-->
+					<a routerLink="/mycart" class="notification">
+						<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+						<span> Cart</span>
+						<span [hidden]="total==0" class="badge">{{total}}</span>
+					</a> 
+				</li>
+			</ul>
+		</ng-template>
+	</form>
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     	<span class="navbar-toggler-icon"></span>
   	</button>

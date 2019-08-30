@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-
-import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MyserviceService } from '../myservice.service';
 
 @Component({
@@ -21,10 +19,12 @@ export class SigninComponent implements OnInit{
        (data:any) => {
        		if(data){
       			localStorage.setItem('isLoggedIn', "1");
-      			localStorage.setItem('user', data.username);
+            localStorage.setItem('user', data.username);
+            localStorage.setItem('user_type', data.user_type);
+            localStorage.setItem('user_id', data._id);
          		//this.router.navigate(['home']);
-				window.location.href = "/home";
-			}
+				    window.location.href = "/product";
+			    }
        },
        error => {
          this.alertMessage = true;

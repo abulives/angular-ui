@@ -1,0 +1,12 @@
+<div class="card-columns">
+    <div class="card" style="max-width:400px"  *ngFor = "let product of products">
+        <img class="card-img-top" src="{{product.image}}" alt="Card image" style="width:100%">
+        <div class="card-body">
+            <h4 class="card-title">{{product.name}}</h4>
+            <p class="card-text"><i class="fa fa-inr" aria-hidden="true"></i>{{product.price}}</p>
+            <button  (click) = "onAddtoCart(product)" type="button" class="btn btn-primary a_button">ADD TO CART</button>
+            <button  (click) = "onBuyNow(product)" type="button" class="btn btn-primary a_button">BUY NOW</button>
+        </div>
+    </div>
+</div>
+  
