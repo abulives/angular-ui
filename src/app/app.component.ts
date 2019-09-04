@@ -62,4 +62,7 @@ export class AppComponent {
     reduceCount(){
         this.total-=1;
     }
+    removeCount(){
+        this.total=0;
+    }
 }

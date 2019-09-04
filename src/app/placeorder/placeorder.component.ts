@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { MyserviceService } from '../myservice.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-placeorder',
@@ -9,7 +10,7 @@ import { MyserviceService } from '../myservice.service';
 })
 export class PlaceorderComponent implements OnInit {
 
-  constructor(private router: Router,private myservice: MyserviceService) { }
+  constructor(private router: Router,private myservice: MyserviceService, private appcomponent: AppComponent) { }
   address;
   editButton=false;
   total_price;
@@ -81,6 +82,8 @@ export class PlaceorderComponent implements OnInit {
           if(data.length>0){
             this.address = data[0];
             this.editButton = true;
+            this.appcomponent.removeCount();
+            this.router.navigate(['product']);
           }
         },error => {
           console.error("Error", error);        

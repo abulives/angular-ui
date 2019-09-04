@@ -43,6 +43,6 @@ export class MyserviceService {
     return this.http.get('http://localhost:3000/api/v1/products/address', {params:data})
    }
    placeOrder(data){
-    return this.http.post('http://localhost:3000/api/v1/order/placeorder', data, httpOptions)
+    return this.http.post('http://localhost:3000/api/v1/orders/placeorder', data, httpOptions)
    }
 }
