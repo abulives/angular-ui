@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                    <button style="float:right" type="button" class="btn btn-success">PLACE ORDER</button>
+                <button routerLink="/placeorder" style="float:right" type="button" class="btn btn-success">PLACE ORDER</button>
             </div>
         </div>
     </div>
@@ -43,14 +43,17 @@
         <div class="card">
             <div class="card-header">
                 DELIVERY ADDRESS
-                <button style="float:right" routerLink="/address" type="button" class="btn btn-primary">EDIT</button>
+                <button style="float:right" routerLink="/address" type="button" class="btn btn-primary">
+                    <span *ngIf="editButton==true">EDIT</span>
+                    <span *ngIf="editButton==false">ADD</span>
+                </button>
             </div>
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-group-item">Abu</li>
-                    <li class="list-group-item">Ramamurthy Nagar</li>
-                    <li class="list-group-item">Bangalore</li>
-                    <li class="list-group-item">560016</li>
+                    <li class="list-group-item">{{address?.name}}</li>
+                    <li class="list-group-item">{{address?.address}}</li>
+                    <li class="list-group-item">{{address?.pincode}}</li>
+                    <li class="list-group-item">{{address?.phone}}</li>
                 </ul> 
             </div>
         </div>

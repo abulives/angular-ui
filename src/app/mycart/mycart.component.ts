@@ -14,22 +14,43 @@ export class MycartComponent implements OnInit {
   carts = [];
   total_price = 0;
   total_quantity = 0;
+  editButton = false;
+  address;
   ngOnInit() {
     if(localStorage.getItem("user_id")){
-      var product = {
-        user_id: localStorage.getItem("user_id")
-      };
-      this.myservice.getmyCart(product).subscribe(
-        (data:any) => {
-          this.carts = data;
-          this.findTotal(data);
-        },error => {
-          console.error("Error", error);        
-        }
-      );
+      this.getmyCart();
+      this.getmyAddress();
     }else{
       this.router.navigate(['signin']);
     }
+  }
+  getmyCart(){
+    var user = {
+      user_id: localStorage.getItem("user_id")
+    };
+    this.myservice.getmyCart(user).subscribe(
+      (data:any) => {
+        this.carts = data;
+        this.findTotal(data);
+      },error => {
+        console.error("Error", error);        
+      }
+    );
+  }
+  getmyAddress(){
+    var user = {
+      user_id: localStorage.getItem("user_id")
+    };
+    this.myservice.getmyAddress(user).subscribe(
+      (data:any) => {
+        if(data.length>0){
+          this.address = data[0];
+          this.editButton = true;
+        }
+      },error => {
+        console.error("Error", error);        
+      }
+    );
   }
   findTotal(data){
     var total_price = 0;

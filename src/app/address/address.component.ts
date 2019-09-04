@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MyserviceService } from '../myservice.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-address',
@@ -10,20 +11,49 @@ import { MyserviceService } from '../myservice.service';
 export class AddressComponent implements OnInit {
   errmsg;
   alertButton;
-  constructor(private router: Router,
-    private myservice: MyserviceService) { }
+  editButton = false;
+  deliveryaddres;
+  constructor(
+    private formBuilder: FormBuilder, private router: Router,
+    private myservice: MyserviceService) {
+      this.deliveryaddres = this.formBuilder.group({
+        name: "",
+        address:"",
+        pincode:"",
+        phone:""
+      });
+     }
 
   ngOnInit() {
-    if(!localStorage.getItem("user_id")){
+    
+    if(localStorage.getItem("user_id")){
+      var user = {
+        user_id: localStorage.getItem("user_id")
+      };
+      this.myservice.getmyAddress(user).subscribe(
+        (data:any) => {
+          if(data.length>0){
+            this.deliveryaddres = this.formBuilder.group({
+              name: data[0].name,
+              address: data[0].address,
+              pincode:data[0].pincode,
+              phone:data[0].phone
+            });
+          }
+        },error => {
+          console.error("Error", error);        
+        }
+      );
+    }else{
       this.router.navigate(['signin']);
     }
   }
-  saveAddress(user) {
-    user.user_id = localStorage.getItem("user_id");
-    this.myservice.saveAddress(user).subscribe(
+  saveAddress(address) {
+    address.user_id = localStorage.getItem("user_id");
+    this.myservice.saveAddress(address).subscribe(
         data => {
             if (data) {
-                this.router.navigate(['mycart']);
+              window.history.back();
             }
         },
         error => {

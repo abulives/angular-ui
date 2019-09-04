@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,6 +17,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ProductComponent } from './product/product.component';
 import { MycartComponent } from './mycart/mycart.component';
 import { AddressComponent } from './address/address.component';
+import { PlaceorderComponent } from './placeorder/placeorder.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +28,14 @@ import { AddressComponent } from './address/address.component';
     RegistrationComponent,
     ProductComponent,
     MycartComponent,
-    AddressComponent
+    AddressComponent,
+    PlaceorderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,

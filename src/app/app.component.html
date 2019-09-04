@@ -9,7 +9,7 @@
     		</ng-template>
     	</div>
 	</div>
-	<form class="form-inline my-2 my-lg-0">
+	<div class="form-inline my-2 my-lg-0">
 		<span *ngIf = "signinButton == '0'; then condition1 else condition2" ></span> 
 		<ng-template #condition1>
 			<button routerLink="/signin" class="btn btn-success my-2 my-sm-0" type="button">Sign In</button>
@@ -39,7 +39,7 @@
 				</li>
 			</ul>
 		</ng-template>
-	</form>
+	</div>
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     	<span class="navbar-toggler-icon"></span>
   	</button>
