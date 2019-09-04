@@ -8,6 +8,8 @@ import { ProductComponent } from './product/product.component';
 import { MycartComponent } from './mycart/mycart.component';
 import { PlaceorderComponent } from './placeorder/placeorder.component';
 import { AddressComponent } from './address/address.component';
+import { MyorderComponent } from './myorder/myorder.component';
+import { OrderComponent } from './order/order.component';
 const routes: Routes = [	
 	{path: '', component: ProductComponent},
 	{path: 'signin', component: SigninComponent},
@@ -16,7 +18,9 @@ const routes: Routes = [
 	{path: 'product', component: ProductComponent},
 	{path: 'mycart', component: MycartComponent},	
 	{path: 'placeorder', component: PlaceorderComponent},	
-	{path: 'address', component: AddressComponent}	
+	{path: 'address', component: AddressComponent},	
+	{path: 'myorder', component: MyorderComponent},
+	{path: 'order', component: OrderComponent}	
 	];
 
 @NgModule({

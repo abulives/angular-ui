@@ -18,6 +18,8 @@ import { ProductComponent } from './product/product.component';
 import { MycartComponent } from './mycart/mycart.component';
 import { AddressComponent } from './address/address.component';
 import { PlaceorderComponent } from './placeorder/placeorder.component';
+import { MyorderComponent } from './myorder/myorder.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { PlaceorderComponent } from './placeorder/placeorder.component';
     ProductComponent,
     MycartComponent,
     AddressComponent,
-    PlaceorderComponent
+    PlaceorderComponent,
+    MyorderComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

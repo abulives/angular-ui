@@ -23,16 +23,6 @@
             <div class="card-header">ORDER DETAILS</div>
             <div class="card-body">
                 <div class="card mb-3">
-                    <div class="card-header">PRICE DETAILS</div>
-                    <div class="card-body">
-                            <ul class="list-group">
-                                    <li class="list-group-item">Quantiy: {{total_quantity}}</li>
-                                    <li class="list-group-item">Delivery : Free</li>
-                                </ul> 
-                    </div>
-                    <div class="card-footer">Total Payable: {{total_price}}</div>
-                </div>
-                <div class="card mb-3">
                     <div class="card-header">
                         DELIVERY ADDRESS
                         <button style="float:right" routerLink="/address" type="button" class="btn btn-primary">
@@ -81,5 +71,15 @@
         </div>
     </div>
     <div class="col-sm-3">
+        <div class="card mb-3">
+            <div class="card-header">PRICE DETAILS</div>
+            <div class="card-body">
+                    <ul class="list-group">
+                            <li class="list-group-item">Quantiy: {{total_quantity}}</li>
+                            <li class="list-group-item">Delivery : Free</li>
+                        </ul> 
+            </div>
+            <div class="card-footer">Total Payable: {{total_price}}</div>
+        </div>
     </div>
 </div>

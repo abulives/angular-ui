@@ -79,14 +79,17 @@ export class PlaceorderComponent implements OnInit {
       data.user_id = localStorage.getItem("user_id");
       this.myservice.placeOrder(data).subscribe(
         (data:any) => {
-          if(data.length>0){
-            this.address = data[0];
-            this.editButton = true;
+          if(data){
+            this.alertButton = 1;
             this.appcomponent.removeCount();
-            this.router.navigate(['product']);
+            setTimeout(()=>{
+              this.router.navigate(['product']);
+            }, 5000);
           }
         },error => {
-          console.error("Error", error);        
+          console.error("Error", error);  
+          this.alertButton=2;    
+          this.errmsg="something went wrong"  
         }
       );
     }else{
