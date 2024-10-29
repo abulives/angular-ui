@@ -1,0 +1,50 @@
+<div class="row text-center">
+    <div class="col-sm-9">
+            <span *ngIf = "alertButton == '1'; then condition1 " ></span> 
+            <ng-template #condition1>
+                <div class="alert alert-success alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                     Updated successfully.
+              </div>
+            </ng-template>
+            <span *ngIf = "alertButton == '2'; then condition2 " ></span> 
+            <ng-template #condition2>	
+              <div class="alert alert-danger alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{errmsg}}
+              </div>
+            </ng-template>
+        </div>
+    <div class="col-sm-3"></div>
+</div>
+<div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">ORDERS</div>
+                <div class="card-body">
+                    <span *ngFor = "let order of orders">
+                        <div class="card  mb-3" *ngFor = "let item of order.items">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <img style="max-width:200px;" class="card-img-top" src="{{item.productid.image}}">
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <h4 class="card-title">{{item.productid.name}}</h4>
+                                        <p class="card-text">{{item.productid.description}}</p>
+                                        <p class="card-text">Price: {{item.productid.price * item.quantity}}</p>
+                                        <p class="card-text">Quantity: {{item.quantity}}</p>
+                                        <p class="card-text">Date: {{order.created_on | date:"MM/dd/yyyy '-' h:mma" }}</p>
+                                        <p class="card-text">Status: {{item.status}}</p>
+                                        <button *ngIf="item.status=='pending'" (click)="statusChange('accept', item._id)" type="button" class="btn btn-success">Accept</button>&nbsp;
+                                        <button (click)="statusChange('reject', item._id)" type="button" class="btn btn-danger">Reject</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    

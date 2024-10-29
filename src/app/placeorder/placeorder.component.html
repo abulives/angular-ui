@@ -1,0 +1,85 @@
+<div class="row text-center">
+    <div class="col-sm-9">
+            <span *ngIf = "alertButton == '1'; then condition1 " ></span> 
+            <ng-template #condition1>
+                <div class="alert alert-success alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                     Order placed successfully.
+              </div>
+            </ng-template>
+            <span *ngIf = "alertButton == '2'; then condition2 " ></span> 
+            <ng-template #condition2>	
+              <div class="alert alert-danger alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{errmsg}}
+              </div>
+            </ng-template>
+        </div>
+    <div class="col-sm-3"></div>
+</div>
+<div class="row">
+    <div class="col-sm-9">
+        <div class="card mb-3">
+            <div class="card-header">ORDER DETAILS</div>
+            <div class="card-body">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        DELIVERY ADDRESS
+                        <button style="float:right" routerLink="/address" type="button" class="btn btn-primary">
+                            <span *ngIf="editButton==true">EDIT</span>
+                            <span *ngIf="editButton==false">ADD</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">{{address?.name}}</li>
+                            <li class="list-group-item">{{address?.address}}</li>
+                            <li class="list-group-item">{{address?.pincode}}</li>
+                            <li class="list-group-item">{{address?.phone}}</li>
+                        </ul> 
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        PAYMENT METHOD
+                    </div>
+                    <div class="card-body">
+                    <form #placeorder = "ngForm">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input value="creditcard" (click)="buttonClick('credit')" type="radio" class="form-check-input" name="payment_method" ngModel>Credit Card
+                            </label>
+                        </div>
+                        <div class="form-group" *ngIf="credit==true">
+                            <input name="card_numer" type="text" class="form-control" id="creditcard" placeholder="Enter credit card number" ngModel>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input value="debitcard" (click)="buttonClick('debit')" type="radio" class="form-check-input" name="payment_method" ngModel>Debit Card
+                            </label>
+                        </div>
+                        <div class="form-group" *ngIf="debit==true">
+                            <input name="card_numer" type="text" class="form-control" id="debitcard" placeholder="Enter debit card number" ngModel>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button (click)="order(placeorder.value)" style="float:right" type="button" class="btn btn-success">ORDER</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card mb-3">
+            <div class="card-header">PRICE DETAILS</div>
+            <div class="card-body">
+                    <ul class="list-group">
+                            <li class="list-group-item">Quantiy: {{total_quantity}}</li>
+                            <li class="list-group-item">Delivery : Free</li>
+                        </ul> 
+            </div>
+            <div class="card-footer">Total Payable: {{total_price}}</div>
+        </div>
+    </div>
+</div>

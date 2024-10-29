@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-sm-9">
+        <div class="card">
+            <div class="card-header">My Cart</div>
+            <div class="card-body">
+                <div class="card" *ngFor = "let cart of carts">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img style="max-width:200px;" class="card-img-top" src="{{cart.image}}">
+                            </div>
+                            <div class="col-sm-9">
+                                <h4 class="card-title">{{cart.name}}</h4>
+                                <p class="card-text">{{cart.description}}</p>
+                                <p class="card-text">Price: {{cart.price}}</p>
+                                <p class="card-text">
+                                    Quantity: 
+                                    <i (click) = "removeCart(cart)" class="fa fa-minus-circle" aria-hidden="true"></i>
+                                    {{cart.quantity}}
+                                    <i (click) = "updateCart(cart)" class="fa fa-plus-circle" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button routerLink="/placeorder" style="float:right" type="button" class="btn btn-success">PLACE ORDER</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card mb-3">
+            <div class="card-header">PRICE DETAILS</div>
+            <div class="card-body">
+                    <ul class="list-group">
+                            <li class="list-group-item">Quantiy: {{total_quantity}}</li>
+                            <li class="list-group-item">Delivery : Free</li>
+                        </ul> 
+            </div>
+            <div class="card-footer">Total Payable: {{total_price}}</div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                DELIVERY ADDRESS
+                <button style="float:right" routerLink="/address" type="button" class="btn btn-primary">
+                    <span *ngIf="editButton==true">EDIT</span>
+                    <span *ngIf="editButton==false">ADD</span>
+                </button>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item">{{address?.name}}</li>
+                    <li class="list-group-item">{{address?.address}}</li>
+                    <li class="list-group-item">{{address?.pincode}}</li>
+                    <li class="list-group-item">{{address?.phone}}</li>
+                </ul> 
+            </div>
+        </div>
+    </div>
+</div>
